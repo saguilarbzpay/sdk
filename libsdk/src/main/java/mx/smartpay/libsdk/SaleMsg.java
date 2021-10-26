@@ -59,12 +59,20 @@ public class SaleMsg {
             this.amount = amount;
         }
 
+        public void setAmount(double amount) {
+            this.amount = Double.valueOf(amount * 100).longValue();
+        }
+
         public long getTipAmount() {
             return tipAmount;
         }
 
         public void setTipAmount(@IntRange(from=0L,to=9999999999L) long tipAmount) {
             this.tipAmount = tipAmount;
+        }
+
+        public void setTipAmount(double tipAmount) {
+            this.tipAmount = Double.valueOf(tipAmount * 100).longValue();;
         }
 
         public int getMsi() {
