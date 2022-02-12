@@ -1,9 +1,12 @@
 
 package mx.smartpay.libsdk;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.util.Base64;
 
+import java.io.ByteArrayOutputStream;
 import java.io.Serializable;
 
 /**
@@ -12,6 +15,7 @@ import java.io.Serializable;
 public abstract class BaseRequest implements Serializable {
     private String appId; // TODO: 9/19/2017 keep it since it can be used to do function limit(using white list, black list)
     private String packageName;
+    private String logoImage;
 
     BaseRequest(){
         //do nothing
@@ -23,7 +27,7 @@ public abstract class BaseRequest implements Serializable {
     Bundle toBundle(@NonNull Bundle bundle) {
         bundle.putInt(Constants.COMMAND_TYPE, this.getType());
         bundle.putString(Constants.APP_ID, this.appId);
-        bundle.putString(Constants.APP_PACKAGE, this.packageName);
+        bundle.putString(Constants.LOGO_IMAGE, this.logoImage);
         return bundle;
     }
 
@@ -56,5 +60,19 @@ public abstract class BaseRequest implements Serializable {
 
     public void setPackageName(String packageName) {
         this.packageName = packageName;
+    }
+
+    public String getLogoImage() {
+        return logoImage;
+    }
+
+    public void setLogoImage(String logoImage) {
+        this.logoImage = logoImage;
+    }
+
+    public void setLogoImage(Bitmap logoImageBitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        logoImageBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+        this.logoImage = Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
     }
 }

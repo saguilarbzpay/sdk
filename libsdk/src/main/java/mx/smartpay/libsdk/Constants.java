@@ -52,6 +52,7 @@ public class Constants {
     static final String URI = "smartpay://mx.smartpay.entry";
     static final String ACTION = "mx.smartpay.entry";
     static final String APP_PACKAGE = "_edc_app_package";
+    static final String LOGO_IMAGE = "_edc_logo_image";
     static class Req {
         static final String REQ_AMOUNT = "_edc_request_amount";
         static final String REQ_TIP_AMOUNT = "_edc_request_tip_amount";
