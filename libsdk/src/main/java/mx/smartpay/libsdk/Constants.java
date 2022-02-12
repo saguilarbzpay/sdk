@@ -47,12 +47,12 @@ public class Constants {
 
     static final String SDK_VERSION = "_edc_sdk_version";
     static final int SDK_VERSION_VALUE = 1;
-    static final String COMMAND_TYPE = "_edc_command_type";
-    static final String APP_ID = "_edc_app_id";
+    public static final String COMMAND_TYPE = "_edc_command_type";
+    public static final String APP_ID = "_edc_app_id";
     static final String URI = "smartpay://mx.smartpay.entry";
     static final String ACTION = "mx.smartpay.entry";
-    static final String APP_PACKAGE = "_edc_app_package";
-    static final String LOGO_IMAGE = "_edc_logo_image";
+    public static final String APP_PACKAGE = "_edc_app_package";
+    public static final String LOGO_IMAGE = "_edc_logo_image";
     static class Req {
         static final String REQ_AMOUNT = "_edc_request_amount";
         static final String REQ_TIP_AMOUNT = "_edc_request_tip_amount";
