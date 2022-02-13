@@ -34,6 +34,7 @@ public abstract class BaseRequest implements Serializable {
     void fromBundle(Bundle bundle) {
         this.appId = IntentUtil.getStringExtra(bundle, Constants.APP_ID);
         this.packageName = IntentUtil.getStringExtra(bundle, Constants.APP_PACKAGE);
+        this.logoImage = IntentUtil.getStringExtra(bundle, Constants.LOGO_IMAGE);
     }
 
     abstract boolean checkArgs();
