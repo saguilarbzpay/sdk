@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
+/**
+ * For app module to call, hide from Javadoc
+ */
 public class MessageUtils {
     private MessageUtils(){
         //do nothing
@@ -28,6 +31,16 @@ public class MessageUtils {
                 return new ReprintTotalMsg.Request(intent.getExtras());
             case Constants.PRINT_BITMAP:
                 return new PrintBitmap.Request(intent.getExtras());
+            case Constants.PRINT_DET_TRANS:
+                return new PrintDetailTransMsg.Request(intent.getExtras());
+            case Constants.CHECKIN:
+                return new CheckInMsg.Request(intent.getExtras());
+            case Constants.CHECKOUT:
+                return new CheckOutMsg.Request(intent.getExtras());
+            case Constants.REAUTH:
+                return new ReauthMsg.Request(intent.getExtras());
+            case Constants.POST_AUTH:
+                return new PostAuthMsg.Request(intent.getExtras());
             default:
                 return null;
         }
