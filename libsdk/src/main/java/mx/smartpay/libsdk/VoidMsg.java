@@ -16,6 +16,8 @@ public class VoidMsg {
 
     public static class Request extends BaseRequest {
         @IntRange(from=0,to=999999) private int voucherNo;
+        private String reference;
+
         public Request() {
         }
 
@@ -32,6 +34,7 @@ public class VoidMsg {
         void fromBundle(Bundle bundle) {
             super.fromBundle(bundle);
             this.voucherNo = IntentUtil.getIntExtra(bundle, Constants.Req.REQ_VOUCHER_NO);
+            this.reference = IntentUtil.getStringExtra(bundle, Constants.Req.REQ_REFERENCE_NO);
         }
 
         @Override
@@ -39,6 +42,7 @@ public class VoidMsg {
         Bundle toBundle(@NonNull Bundle bundle) {
             super.toBundle(bundle);
             bundle.putInt(Constants.Req.REQ_VOUCHER_NO, this.voucherNo);
+            bundle.putString(Constants.Req.REQ_REFERENCE_NO, this.reference);
             return bundle;
         }
 
@@ -55,11 +59,24 @@ public class VoidMsg {
         }
 
         /**
+         * @return reference
+         */
+        public String getReference() { return reference; }
+
+        /**
          *
          * @param voucherNo from 0 to 999999, 0 means the last last transaction
          */
         public void setVoucherNo(@IntRange(from=0,to=999999) int voucherNo) {
             this.voucherNo = voucherNo;
+        }
+
+        /**
+         *
+         * @param reference
+         */
+        public void setReference(String reference){
+            this.reference = reference;
         }
 
         @Override
@@ -86,6 +103,4 @@ public class VoidMsg {
             return true;
         }
     }
-
-
 }

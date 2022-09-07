@@ -49,6 +49,7 @@ public abstract class TransResponse extends BaseResponse {
     private String transTime; //YYYYMMDDHHmmss
     private String amount;
     private String authCode;
+    private String reference;
 
     private byte[] signatureJbig;
 
@@ -78,6 +79,7 @@ public abstract class TransResponse extends BaseResponse {
         bundle.putString(Constants.Resp.RSP_AUTH_CODE, this.authCode);
         bundle.putByteArray(Constants.Resp.RSP_CH_SIGNATURE, this.signatureJbig);
         bundle.putByteArray(Constants.Resp.RSP_CH_SIGNATURE_PATH, this.signaturePath);
+        bundle.putString(Constants.Resp.RSP_REFERENCE, this.reference);
         return bundle;
     }
 
@@ -98,9 +100,18 @@ public abstract class TransResponse extends BaseResponse {
         this.authCode = IntentUtil.getStringExtra(bundle, Constants.Resp.RSP_AUTH_CODE);
         this.signatureJbig = IntentUtil.getByteArrayExtra(bundle, Constants.Resp.RSP_CH_SIGNATURE);
         this.signaturePath = IntentUtil.getByteArrayExtra(bundle, Constants.Resp.RSP_CH_SIGNATURE_PATH);
+        this.reference = IntentUtil.getStringExtra(bundle, Constants.Resp.RSP_REFERENCE);
     }
 
     abstract boolean checkArgs();
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
 
     public String getMerchantName() {
         return merchantName;
@@ -248,6 +259,6 @@ public abstract class TransResponse extends BaseResponse {
     public String toString() {
         return super.toString() + " " + merchantName + " " + merchantId + " " + terminalId + " " +
                 cardNo + " " + voucherNo + " " + batchNo  + " " + issuerName  + " " + acquirerName
-                + " " + refNo + " " + transTime + " " + amount + " " + authCode;
+                + " " + refNo + " " + transTime + " " + amount + " " + authCode + " " + reference;
     }
 }
