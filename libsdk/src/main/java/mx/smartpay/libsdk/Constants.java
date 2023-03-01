@@ -23,7 +23,7 @@ import java.lang.annotation.RetentionPolicy;
  * Hide from Javadoc
  */
 public class Constants {
-    @IntDef({PRE_AUTH, SALE, VOID, REFUND, SETTLE, REPRINT_TRANS, REPRINT_TOTAL,
+    @IntDef({PRE_AUTH, SALE, VOID, REFUND, ADJUST, SETTLE, REPRINT_TRANS, REPRINT_TOTAL,
             PRINT_BITMAP, PRINT_DET_TRANS, CHECKIN, CHECKOUT, REAUTH})
     @Retention(RetentionPolicy.SOURCE)
     public @interface CommandType {
@@ -33,6 +33,7 @@ public class Constants {
     public static final int SALE = 2;
     public static final int VOID = 3;
     public static final int REFUND = 4;
+    public static final int ADJUST = 14;
     public static final int SETTLE = 5;
     public static final int REPRINT_TRANS = 6;
     public static final int REPRINT_TOTAL = 7;
