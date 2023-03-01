@@ -10,14 +10,17 @@ import android.support.annotation.NonNull;
  */
 public class RefundMsg {
 
-    private RefundMsg(){
+    private RefundMsg() {
         //do nothing
     }
 
     public static class Request extends BaseRequest {
-        @IntRange(from=0L,to=9999999999L) private long amount;
+        @IntRange(from = 0L, to = 9999999999L)
+        private long amount;
         private String orgRefNo;
         private String orgDate;
+
+        private String orgAdjust;
 
         public Request() {
         }
@@ -37,6 +40,7 @@ public class RefundMsg {
             this.amount = IntentUtil.getLongExtra(bundle, Constants.Req.REQ_AMOUNT);
             this.orgRefNo = IntentUtil.getStringExtra(bundle, Constants.Req.REQ_ORIGINAL_REF_NO);
             this.orgDate = IntentUtil.getStringExtra(bundle, Constants.Req.REQ_ORIGINAL_DATE);
+            this.orgAdjust = IntentUtil.getStringExtra(bundle, Constants.Req.REQ_ORIGINAL_ADJUST);
         }
 
         @Override
@@ -46,6 +50,7 @@ public class RefundMsg {
             bundle.putLong(Constants.Req.REQ_AMOUNT, this.amount);
             bundle.putString(Constants.Req.REQ_ORIGINAL_REF_NO, this.orgRefNo);
             bundle.putString(Constants.Req.REQ_ORIGINAL_DATE, this.orgDate);
+            bundle.putString(Constants.Req.REQ_ORIGINAL_ADJUST, this.orgAdjust);
             return bundle;
         }
 
@@ -58,12 +63,13 @@ public class RefundMsg {
             return amount;
         }
 
-        public void setAmount(@IntRange(from=0L,to=9999999999L) long amount) {
+        public void setAmount(@IntRange(from = 0L, to = 9999999999L) long amount) {
             this.amount = amount;
         }
 
         /**
          * optional
+         *
          * @return original ref no
          */
         public String getOrgRefNo() {
@@ -77,6 +83,7 @@ public class RefundMsg {
         /**
          * optional
          * format: MMDD
+         *
          * @return date
          */
         public String getOrgDate() {
@@ -89,7 +96,7 @@ public class RefundMsg {
 
         @Override
         public String toString() {
-            return super.toString() + " " + amount + " " + orgRefNo + " " + orgDate;
+            return super.toString() + " " + amount + " " + orgRefNo + " " + orgDate + " " + orgAdjust;
         }
     }
 
@@ -111,7 +118,4 @@ public class RefundMsg {
             return true;
         }
     }
-
-
-
 }

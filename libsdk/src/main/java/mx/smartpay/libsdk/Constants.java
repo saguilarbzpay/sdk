@@ -61,6 +61,8 @@ public class Constants {
         static final String REQ_REFERENCE = "_edc_request_reference";
         static final String REQ_ORIGINAL_REF_NO = "_edc_request_org_ref_no";
         static final String REQ_ORIGINAL_DATE = "_edc_request_org_date";
+
+        static final String REQ_ORIGINAL_ADJUST = "_edc_request_org_adjust";
         static final String REQ_VOUCHER_NO = "_edc_request_voucher_no";
         static final String REQ_REFERENCE_NO = "_edc_request_reference_no";
 
