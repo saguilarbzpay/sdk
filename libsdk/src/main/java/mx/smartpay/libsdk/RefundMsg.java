@@ -72,6 +72,14 @@ public class RefundMsg {
          *
          * @return original ref no
          */
+        public String getOrgAdjust() {
+            return orgAdjust;
+        }
+
+        public void setOrgAdjust(String adjust) {
+            this.orgAdjust = orgAdjust;
+        }
+
         public String getOrgRefNo() {
             return orgRefNo;
         }
